@@ -1,0 +1,26 @@
+.pagination_section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: #fff;
+    color: #848f9c;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .active {
+    background-color: #29102d;
+    color: #fff;
+  }
+}

@@ -1,0 +1,111 @@
+@use "@/app/_breakpoints.scss" as *;
+.ff-homepage-feature-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #29102d;
+
+  .ff-homepage-feature-wrapper-div {
+    display: flex;
+    .ff-homepage-feature-text-section {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-basis: 50vw;
+      padding: 50px;
+      gap: 25px;
+      padding-top: 60px;
+      width: 120vw;
+      color: #fff;
+
+      .ff-homepage-feature-main-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 600;
+        font-size: 36px;
+        span {
+          display: block;
+        }
+        @include xs {
+          text-align: center;
+          font-weight: 600;
+          font-size: 24px;
+        }
+        @include sm {
+          text-align: center;
+          font-weight: 600;
+          font-size: 24px;
+        }
+        @include md {
+          text-align: center;
+          font-weight: 600;
+          font-size: 36px;
+        }
+      }
+
+      .ff-homepage-feature-sub-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include groupXsSmMd {
+          text-align: center;
+        }
+        span {
+          display: block;
+        }
+      }
+
+      // Button section
+      .ff-homepage-feature-button {
+        width: 160px;
+        height: 34px;
+        border-radius: 8px;
+        border: none;
+        background-color: #fff;
+        color: #29102d;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
+    .ff-homepage-feature-img-section {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      top: -30%;
+      left: -2%;
+      margin: 0 auto;
+      max-width: 85vw;
+
+      @include xs {
+        top: -10%;
+        left: -2%;
+        max-width: 90%;
+      }
+      @include sm {
+        top: -10%;
+        left: -2%;
+        max-width: 90%;
+      }
+
+      @include md {
+        top: -20%;
+        left: -2%;
+        max-width: 90%;
+      }
+
+      @include lg {
+        top: -30%;
+        left: -2.5%;
+        max-width: 90%;
+      }
+      @include xl {
+        top: -30%;
+        left: 0;
+        margin: 0 auto;
+        max-width: 85%;
+      }
+    }
+  }
+}

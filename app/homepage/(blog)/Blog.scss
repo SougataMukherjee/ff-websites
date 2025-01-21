@@ -1,0 +1,134 @@
+@use "../../globals.scss" as *;
+@use "../../breakpoints.scss" as *;
+.ff-homepage-blog-wrapper {
+  @include xs {
+    padding: 20px;
+    line-height: 40px;
+  }
+  @include sm {
+    padding: 20px;
+    line-height: 40px;
+  }
+  .ff-homepage-blog-text-section {
+    font-size: 36px;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+  }
+  .ff-homepage-blog-btn-section {
+    button {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+  .ff-homepage-blog-accordion-section {
+    margin: 10px;
+    height: 466px;
+    background-color: #fff;
+  }
+  .ff-homepage-blog-text-section,
+  .ff-homepage-blog-btn-section,
+  .ff-homepage-blog-accordion-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+  }
+
+  .ff-homepage-blog-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .ff-homepage-blog-heading {
+      font-size: 36px;
+      font-weight: 700;
+    }
+    .ff-homepage-blog-container {
+      @include xs {
+        width: 340px;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #29102d;
+          border-radius: 20px;
+        }
+      }
+      @include sm {
+        width: 340px;
+        overflow-x: auto;
+        &::-webkit-scrollbar {
+          height: 5px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #29102d;
+          border-radius: 10px;
+        }
+      }
+      .ff-homepage-blog {
+        @include xs {
+          width: max-content;
+        }
+        @include sm {
+          width: max-content;
+        }
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 36px;
+        @include xs {
+          margin-bottom: 5px;
+        }
+        @include sm {
+          margin-bottom: 5px;
+        }
+        @include md {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .ff-homepage-blog-mid-content {
+          padding: 16px;
+          .ff-homepage-blog-mid-content-heading {
+            font-weight: 600;
+            font-size: 16px;
+          }
+          .ff-homepage-blog-mid-content-sub {
+            font-weight: 300;
+            font-size: 12px;
+
+            line-height: 22px;
+            color: #848f9c;
+          }
+          .ff-homepage-blog-mid-content-button {
+            font-weight: 500;
+            font-size: 12px;
+            width: 121px;
+            height: 36px;
+            margin-top: 20px;
+          }
+        }
+      }
+    }
+    .ff-homepage-blog-arrow-btn {
+      display: none;
+      @include xs {
+        display: flex;
+        margin-left: 200px;
+        justify-content: flex-end;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      @include sm {
+        display: flex;
+        margin-left: 200px;
+        justify-content: flex-end;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+  }
+}

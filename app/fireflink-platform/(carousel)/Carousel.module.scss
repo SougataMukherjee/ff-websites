@@ -1,0 +1,100 @@
+.carouselContainer {
+  padding-left: 200px;
+  padding-right: 200px;
+  margin: auto;
+  text-align: center;
+  background-color: #f7f9fc;
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .slick-slider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #d9e4f5, #e6eaf2);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: none;
+    background: transparent;
+    width: 724px;
+    height: 340px;
+    // &.activeSlide {
+    //   background-color: #29102d;
+    // }
+  }
+
+  .contentBox {
+    max-width: 724px;
+    height: 340px;
+    text-align: left;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    &.activeSlide {
+      background-color: #29102d;
+    }
+    .slider-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+    }
+    .slider-div {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background-color: #848f9c;
+    }
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 10px;
+      &.activeSlide {
+        color: #fff;
+      }
+    }
+
+    p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.5;
+      &.activeSlide {
+        color: #fff;
+      }
+    }
+  }
+
+  .navigationButtons {
+    margin-top: 20px;
+    display: flex;
+    .navButton {
+      color: #f7f9fc;
+      background-color: transparent;
+      border: none;
+      border-radius: 8px;
+      font-size: 2.85rem;
+      margin: 0 20px;
+      cursor: pointer;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 4px;
+      height: 8px;
+      border-radius: 8px;
+      &.active {
+        color: #29102d;
+      }
+      &.passive {
+        color: #ffffff;
+      }
+    }
+  }
+}

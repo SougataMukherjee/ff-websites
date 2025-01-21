@@ -1,0 +1,31 @@
+.blogs_container {
+  display: flex;
+  gap: 20px;
+  padding: 40px 80px 40px 80px;
+  background-color: #f7f9fc;
+}
+
+.main_section {
+  flex: 3;
+  max-width: 840px;
+
+  .no_blog_found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .no_blog_found_text {
+      color: #0a2540;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+}
+
+.sidebar_section {
+  flex: 1;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}

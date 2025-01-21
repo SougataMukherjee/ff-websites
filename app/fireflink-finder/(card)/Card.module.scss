@@ -1,0 +1,129 @@
+@use "../../breakpoints" as *;
+.ff-finder-card-wrapper {
+  background-color: #f7f9fc;
+  .ff-finder-card-heading {
+    height: 139px;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin: 50px auto;
+    height: 200px;
+    .circle {
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .content {
+        text-align: center;
+        transition: opacity 0.3s ease;
+        color: #0a2540;
+      }
+
+      h4 {
+        margin: 5px 0 2px;
+        font-size: 18px;
+        line-height: 27px;
+        font-weight: bold;
+      }
+
+      p {
+        font-size: 12px;
+        line-height: 18px;
+        padding: 0 11px;
+        color: #848f9c;
+        font-weight: 400;
+        margin: 0;
+      }
+
+      .icon {
+        font-size: 20px;
+        margin-bottom: 5px;
+        background-color: #29102d;
+        width: 80px;
+        height: 80px;
+        border-radius: 12px;
+        position: absolute;
+        left: 31%;
+        top: -10%;
+      }
+
+      &.active {
+        width: 230px;
+        height: 230px;
+        background-color: #fff;
+        transform: scale(1.2);
+        .content {
+          opacity: 1;
+        }
+        h4 {
+          padding-top: 10px;
+        }
+      }
+    }
+  }
+
+  .ff-finder-card-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    .ff-finder-card {
+      margin: 10px 0 0 20px;
+    }
+    .ff-finder-card-img {
+      object-fit: contain;
+    }
+    .ff-finder-card-div {
+      background-color: #29102d;
+      height: 60px;
+      width: 60px;
+      border-radius: 12px;
+    }
+    .ff-finder-card-mid-content {
+      padding: 24px;
+      .ff-finder-card-mid-content-header {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        color: #000000;
+      }
+      .ff-finder-card-mid-content-description {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: #848f9c;
+      }
+    }
+  }
+  .ff-finder-test-journey {
+    display: flex;
+    justify-content: center;
+    padding: 80px;
+    @include xs {
+      padding: 30px;
+    }
+    @include sm {
+      padding: 30px;
+    }
+    .ff-finder-test-journey-div {
+      width: 1120px;
+      height: 338px;
+      border-radius: 24px;
+      background-color: #29102d;
+      color: #fff;
+    }
+  }
+}

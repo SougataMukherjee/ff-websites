@@ -1,0 +1,160 @@
+.stack-of-card-wrapper {
+  background-color: #f7f9fc;
+  &__divider {
+    height: 60px;
+  }
+  &__main-card {
+    display: flex;
+    justify-content: center;
+  }
+  .stack-of-card-heading {
+    color: #0a2540;
+    font-size: 36px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .stack-of-card-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 580px;
+
+    &__left-div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      height: 352px;
+      width: 430px;
+      background: radial-gradient(
+        64.43% 50% at 50% 50%,
+        #c6c6c6 78%,
+        #71347b 147%
+      );
+      &__row {
+        display: flex;
+        width: 382px;
+        height: 64px;
+        align-items: center;
+        gap: 20px;
+        padding-left: 10px;
+        &__icon {
+          height: 32px;
+          width: 32px;
+          border-radius: 4px;
+          background-color: #fff;
+          &--active {
+            background-color: #29102d;
+          }
+        }
+        &__text {
+          font-weight: 500;
+          font-size: 18px;
+        }
+        &--active {
+          background-color: white;
+        }
+      }
+    }
+    &__right-div {
+      .loading {
+        position: relative;
+        width: 560px;
+        height: 480px;
+        perspective: 800px;
+        margin-left: 50px;
+        .content-header {
+          color: #0a2540;
+          font-weight: 600;
+          font-size: 32px;
+          line-height: 48px;
+          margin-left: 10px;
+        }
+        .content-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          margin-left: 10px;
+          > li {
+            position: relative;
+            color: #848f9c;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 40px;
+            margin-left: 20px;
+            &::before {
+              content: url("../../../../public/images/tick.svg");
+              position: absolute;
+              left: -20px;
+              top: 2px;
+              width: 16px;
+              height: 16px;
+            }
+          }
+        }
+      }
+
+      .card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        transform-style: preserve-3d;
+        overflow: hidden;
+        transition: transform 1s ease, opacity 1s ease, z-index 0.5s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        z-index: calc(20 - abs(var(--i) - var(--i)));
+        transform: translateX(calc(var(--i) * -20px));
+        // z-index: calc(10 - var(--i));
+        // transform: translateX(calc(var(--i) * -20px));
+        cursor: pointer;
+
+        span {
+          position: absolute;
+          width: 100%;
+          height: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 8em;
+          color: #fff;
+        }
+
+        &:nth-child(1) {
+          background: lightgray;
+        }
+        &:nth-child(2) {
+          background: lightgray;
+        }
+        &:nth-child(3) {
+          background: lightgray;
+        }
+        &:nth-child(4) {
+          background: lightgray;
+        }
+
+        span:first-child {
+          top: 0;
+        }
+
+        span:last-child {
+          bottom: 0;
+        }
+      }
+
+      .active {
+        transform: translateX(0);
+        z-index: 20;
+      }
+
+      .inactive {
+        transform: translateX(calc(var(--i) * -20px));
+        z-index: calc(10 - var(--i));
+      }
+    }
+  }
+}
