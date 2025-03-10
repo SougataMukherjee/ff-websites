@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import "./globals.scss";
 import "./global.css";
 import { Poppins } from "next/font/google";
-import Navbar from "@/components/navbar/Navbar";
+// import Navbar from "@/components/navbar/Navbar";
+import AppHeader from "@/components/AppHeader/AppHeader";
 import Footer from "@/components/footer/Footer";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ export default function RootLayout({
         <link rel="icon" href="/images/fireflink-logo.svg" />
       </head>
       <body>
-        <Navbar />
+        <AppHeader />
         {children}
         <Footer />
       </body>
