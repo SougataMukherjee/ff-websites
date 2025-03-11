@@ -39,8 +39,24 @@ const Category: FC<CategoryProps> = ({ onSelect, selectedCategory, blogs }) => {
           }`}
         >
           <div className={Style["category_section_text"]}>
-            <h3>{category}</h3>
-            <h3>({getCategoryCount(category)})</h3>
+            <h3
+              className={
+                selectedCategory === category
+                  ? "active-class"
+                  : "in-active-class"
+              }
+            >
+              {category}
+            </h3>
+            <h3
+              className={
+                selectedCategory === category
+                  ? "active-class"
+                  : "in-active-class"
+              }
+            >
+              ({getCategoryCount(category)})
+            </h3>
           </div>
         </div>
       ))}

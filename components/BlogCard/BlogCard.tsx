@@ -47,7 +47,14 @@ const BlogCard: FC<BlogCardProps> = ({
           </h5>
           <Button
             className={Style["view_more_button"]}
-            variant="primary"
+            variant="custom"
+            style={{
+              backgroundColor: "#29102d",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              padding: "8px 16px",
+            }}
             label="Read more"
             onClick={handleViewMore}
           />

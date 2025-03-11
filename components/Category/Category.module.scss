@@ -4,7 +4,6 @@
   background-color: #fff;
   border-radius: 16px;
   h3 {
-    color: #0a2540;
     font-weight: 700;
     font-size: 20px;
   }
@@ -13,17 +12,23 @@
     padding: 10px;
     &.active {
       font-weight: bold;
-      background-color: #f0f0f0;
-      border-left: 4px solid #29102d;
+      border-radius: 8px;
+      background-color: #29102d;
+      color: #fff;
     }
   }
   .category_section_text {
     display: flex;
     justify-content: space-between;
     h3 {
-      color: #0a2540;
       font-size: 16px;
       font-weight: 500;
+      .active-class {
+        color: #fff;
+      }
+      .in-active-class {
+        color: #0a2540;
+      }
     }
   }
 }
