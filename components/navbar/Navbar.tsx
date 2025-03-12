@@ -22,9 +22,7 @@ const Navbar: FC = () => {
   const [textColor, setTextColor] = useState("#fff");
   const [hoverTextColor, setHoverTextColor] = useState("#f39c12");
   const [demoButton, setDemoButton] = useState(false);
-  const [logoSrc, setLogoSrc] = useState(
-    "/images/fireflink-logo-with-text.svg"
-  );
+  const [logoSrc, setLogoSrc] = useState("");
 
   const handleMouseEnter = (menu: string) => {
     if (closeTimeout) {
@@ -90,9 +88,20 @@ const Navbar: FC = () => {
       style={{ backgroundColor: bgColor, boxShadow: shadow }}
     >
       <nav className="ff-navbar">
-        <div className="logo">
+        <div
+          className="logo"
+          style={{
+            background:
+              (window.scrollY / document.body.scrollHeight -
+                window.innerHeight) *
+                100 >
+              20
+                ? "#29102d"
+                : "#29102d",
+          }}
+        >
           <Link href="/">
-            <Image src={logoSrc} width="160" height="33" alt="FireFlink" />
+            <Icon name={logoSrc} width={160} height={33} />
           </Link>
         </div>
 
