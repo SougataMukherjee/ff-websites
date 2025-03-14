@@ -28,11 +28,6 @@ const Feature = () => {
       clearTimeout(timeoutRef.current);
     }
     setIsPaused(true);
-
-    // timeoutRef.current = setTimeout(() => {
-    //   setIsPaused(false);
-    //   startAutoSlide();
-    // }, 5000);
   };
 
   // Start auto-slide when component mounts
@@ -50,29 +45,13 @@ const Feature = () => {
     };
   }, [isPaused]);
 
-  // const prevSlide = () => {
-  //   stopAutoSlide();
-  //   setCurrentIndex((prevIndex) =>
-  //     prevIndex === 0 ? bannerData.length - 1 : prevIndex - 1
-  //   );
-  // };
-
-  // const nextSlide = () => {
-  //   stopAutoSlide();
-  //   setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerData.length);
-  // };
-
-  // const [currentIndex, setCurrentIndex] = useState(0);
-  const [prevIndex, setPrevIndex] = useState(null);
   const [isPlaying, setIsPlaying] = useState(true);
-  const [fade, setFade] = useState(true);
   const [slideDirection, setSlideDirection] = useState("forward");
 
   useEffect(() => {
     if (!isPlaying) return;
 
     const interval = setInterval(() => {
-      setFade(false);
       nextSlide();
     }, 4000);
 
@@ -89,14 +68,12 @@ const Feature = () => {
   const prevSlide = () => {
     setSlideDirection("backward");
     stopAutoSlide();
-    setPrevIndex(currentIndex);
     setCurrentIndex((prev) => (prev === 0 ? bannerData.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
     setSlideDirection("forward");
     stopAutoSlide();
-    setPrevIndex(currentIndex);
     setCurrentIndex((prev) => (prev === bannerData.length - 1 ? 0 : prev + 1));
   };
 
@@ -104,7 +81,9 @@ const Feature = () => {
     setIsPlaying(!isPlaying);
     const sliderImages = document.querySelectorAll(".slider img");
     sliderImages.forEach((img) => {
-      img.style.animationPlayState = isPlaying ? "paused" : "running";
+      (img as HTMLImageElement).style.animationPlayState = isPlaying
+        ? "paused"
+        : "running";
     });
   };
   return (
@@ -140,20 +119,46 @@ const Feature = () => {
           ))}
         </aside>
 
-        <section>
+        <section style={{ position: "relative", top: "-10px" }}>
           <Button
             className="ff-homepage-feature-button"
-            variant="secondary"
+            variant="custom"
+            style={{
+              padding: "8px 37px",
+              background: "var(--base-bg-color)",
+              borderRadius: "8px",
+            }}
+            typographyStyle={{
+              color: "var(--ff-primary-color)",
+              fontSize: 12,
+              fontWeight: 500,
+            }}
             label="Schedule a free demo"
             size="large"
             onClick={() => router.push("http://localhost:3000/schedule-demo")}
           />
         </section>
+        <div className="arrow_left_homepage_banner_left">
+          <Icon
+            name="arrow_left_accordian"
+            onClick={prevSlide}
+            color="#ffffff"
+            height={40}
+            width={40}
+          />
+        </div>
+        <div className="arrow_left_homepage_banner_right">
+          <Icon
+            name="arrow_right_icon"
+            onClick={nextSlide}
+            color="#ffffff"
+            height={40}
+            width={40}
+          />
+        </div>
       </article>
 
       <figure className="ff-homepage-feature-img-section">
-        <div className="arrow_left_homepage_banner_left"></div>
-
         <div className="slider">
           <div className="slider-images">
             {bannerData.map((item, index) => (
@@ -175,29 +180,14 @@ const Feature = () => {
               />
             ))}
           </div>
-          <Icon
-            name="arrow_left_accordian"
-            onClick={prevSlide}
-            color="#e5eeee"
-            height={40}
-            width={40}
-          />
+
           <button className="play-pause" onClick={togglePlayPause}>
             {isPlaying ? (
-              <Icon name="record_play" />
+              <Icon name="record_play" height={40} width={40} />
             ) : (
-              <Icon name="video_play_icon" />
+              <Icon name="video_play_icon" height={40} width={40} />
             )}
           </button>
-          <div className="arrow_left_homepage_banner_right">
-            <Icon
-              name="arrow_right_icon"
-              onClick={nextSlide}
-              color="#e5eeee"
-              height={40}
-              width={40}
-            />
-          </div>
         </div>
       </figure>
     </section>
