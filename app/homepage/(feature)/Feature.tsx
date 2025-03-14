@@ -29,10 +29,10 @@ const Feature = () => {
     }
     setIsPaused(true);
 
-    timeoutRef.current = setTimeout(() => {
-      setIsPaused(false);
-      startAutoSlide();
-    }, 5000);
+    // timeoutRef.current = setTimeout(() => {
+    //   setIsPaused(false);
+    //   startAutoSlide();
+    // }, 5000);
   };
 
   // Start auto-slide when component mounts
@@ -50,22 +50,71 @@ const Feature = () => {
     };
   }, [isPaused]);
 
+  // const prevSlide = () => {
+  //   stopAutoSlide();
+  //   setCurrentIndex((prevIndex) =>
+  //     prevIndex === 0 ? bannerData.length - 1 : prevIndex - 1
+  //   );
+  // };
+
+  // const nextSlide = () => {
+  //   stopAutoSlide();
+  //   setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerData.length);
+  // };
+
+  // const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [fade, setFade] = useState(true);
+  const [slideDirection, setSlideDirection] = useState("forward");
+
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const interval = setInterval(() => {
+      setFade(false);
+      nextSlide();
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isPlaying]);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setIsPaused(false); // Enable transition after a delay
+    }, 500); // Adjust delay as needed
+
+    return () => clearTimeout(timeout);
+  }, []);
+
   const prevSlide = () => {
+    setSlideDirection("backward");
     stopAutoSlide();
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? bannerData.length - 1 : prevIndex - 1
-    );
+    setPrevIndex(currentIndex);
+    setCurrentIndex((prev) => (prev === 0 ? bannerData.length - 1 : prev - 1));
   };
 
   const nextSlide = () => {
+    setSlideDirection("forward");
     stopAutoSlide();
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % bannerData.length);
+    setPrevIndex(currentIndex);
+    setCurrentIndex((prev) => (prev === bannerData.length - 1 ? 0 : prev + 1));
   };
 
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+    const sliderImages = document.querySelectorAll(".slider img");
+    sliderImages.forEach((img) => {
+      img.style.animationPlayState = isPlaying ? "paused" : "running";
+    });
+  };
   return (
     <section className="ff-homepage-feature-wrapper">
       <article className="ff-homepage-feature-text-section">
-        <header className="ff-homepage-feature-main-text">
+        <header
+          className={`ff-homepage-feature-main-text ${
+            isPaused ? "paused" : "fade"
+          }`}
+        >
           {bannerData.map((item, index) => (
             <span
               key={item.id}
@@ -76,7 +125,11 @@ const Feature = () => {
           ))}
         </header>
 
-        <aside className="ff-homepage-feature-sub-text">
+        <aside
+          className={`ff-homepage-feature-sub-text ${
+            isPaused ? "paused" : "fade"
+          }`}
+        >
           {bannerData.map((item, index) => (
             <span
               key={item.id}
@@ -99,7 +152,29 @@ const Feature = () => {
       </article>
 
       <figure className="ff-homepage-feature-img-section">
-        <div className="arrow_left_homepage_banner_left">
+        <div className="arrow_left_homepage_banner_left"></div>
+
+        <div className="slider">
+          <div className="slider-images">
+            {bannerData.map((item, index) => (
+              <Image
+                key={item.image}
+                src={item.image}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                layout="responsive"
+                width={1156}
+                height={720}
+                alt="Slide"
+                className={
+                  index === currentIndex
+                    ? slideDirection === "forward"
+                      ? "active"
+                      : "reverse"
+                    : ""
+                }
+              />
+            ))}
+          </div>
           <Icon
             name="arrow_left_accordian"
             onClick={prevSlide}
@@ -107,33 +182,22 @@ const Feature = () => {
             height={40}
             width={40}
           />
-        </div>
-        {bannerData.map((item, index) => (
-          <div
-            key={item.id}
-            className={`image-container ${
-              index === currentIndex ? "active" : ""
-            }`}
-          >
-            <Image
-              src={item.image}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              layout="responsive"
-              width={1156}
-              height={720}
-              alt="homepage-feature-image"
-              className="ff-homepage-feature-img"
+          <button className="play-pause" onClick={togglePlayPause}>
+            {isPlaying ? (
+              <Icon name="record_play" />
+            ) : (
+              <Icon name="video_play_icon" />
+            )}
+          </button>
+          <div className="arrow_left_homepage_banner_right">
+            <Icon
+              name="arrow_right_icon"
+              onClick={nextSlide}
+              color="#e5eeee"
+              height={40}
+              width={40}
             />
           </div>
-        ))}
-        <div className="arrow_left_homepage_banner_right">
-          <Icon
-            name="arrow_right_icon"
-            onClick={nextSlide}
-            color="#e5eeee"
-            height={40}
-            width={40}
-          />
         </div>
       </figure>
     </section>
