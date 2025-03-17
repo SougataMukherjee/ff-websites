@@ -91,10 +91,10 @@
   }
 
   .ff-homepage-feature-img-section {
-    overflow: hidden;
+    // overflow: hidden;
     position: relative;
     width: 100%;
-    top: -28%;
+    top: -18%;
     left: 0%;
     margin: 0 auto;
     max-width: 87vw;
@@ -161,6 +161,7 @@
 .ff-homepage-feature-main-text span.active,
 .ff-homepage-feature-sub-text span.active {
   opacity: 1;
+  position: relative;
 }
 .image-container {
   position: absolute;
@@ -234,13 +235,11 @@
 .slider img.active {
   opacity: 1;
   transform: translateX(0);
-  animation: slideRightToLeft 4s forwards;
 }
 
 .slider img.reverse {
   opacity: 1;
   transform: translateX(0);
-  animation: slideLeftToRight 4s forwards;
 }
 
 .arrow {
@@ -275,32 +274,42 @@
   cursor: pointer;
 }
 
-@keyframes slideRightToLeft {
-  0% {
-    transform: translate3d(100%, 0, 0);
-  }
-  20% {
-    transform: translate3d(0, 0, 0);
-  }
-  80% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(-100%, 0, 0);
+.custom-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
   }
 }
 
-@keyframes slideLeftToRight {
-  0% {
-    transform: translate3d(-100%, 0, 0);
-  }
-  20% {
-    transform: translate3d(0, 0, 0);
-  }
-  80% {
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    transform: translate3d(100%, 0, 0);
+.left-arrow {
+  left: -50px; // Adjust as needed
+  top: -50px;
+}
+
+.right-arrow {
+  right: -50px; // Adjust as needed
+  top: -50px;
+}
+.custom-prev-arrow {
+  position: absolute;
+  left: -60px;
+  top: 60px;
+}
+.custom-next-arrow {
+  position: absolute;
+  top: 60px;
+  right: -60px;
+}
+.arrow-btn {
+  &:hover {
+    background-color: #d3d3d3;
+    border-radius: 18px;
   }
 }
