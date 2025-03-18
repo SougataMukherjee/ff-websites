@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Style from "./StackOfCard.module.scss";
 import Card from "@/components/card/Card";
 import { SalesForcesSolutionsCardData } from "@/constants/SalesForcesSolutionsCardData";
+import { Icon } from "pixel-react";
 
 const StackOfCard = () => {
   const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -16,7 +17,12 @@ const StackOfCard = () => {
   ];
 
   const handleCardClick = (index: number) => {
-    setActiveCardIndex(index);
+    if (index === 0) {
+      // Reset all cards when clicking the first index
+      setActiveCardIndex(0);
+    } else {
+      setActiveCardIndex(index);
+    }
   };
 
   const handleRowClick = (index: number) => {
@@ -82,9 +88,22 @@ const StackOfCard = () => {
                        ]
                      : ""
                  }`}
-              ></span>
+              >
+                <Icon
+                  name="globe_icon"
+                  width={24}
+                  height={24}
+                  color={index === activeCardIndex ? "#fff" : "#29102D"}
+                />
+              </span>
               <span
-                className={Style["stack-of-card-section__left-div__row__text"]}
+                className={
+                  index === activeCardIndex
+                    ? Style[
+                        "stack-of-card-section__left-div__row__text--active"
+                      ]
+                    : Style["stack-of-card-section__left-div__row__text"]
+                }
               >
                 {row}
               </span>
@@ -99,15 +118,17 @@ const StackOfCard = () => {
                 key={label}
                 cardProperties={{
                   className: `${Style.card} ${
-                    index + 1 === activeCardIndex + 1
+                    index === activeCardIndex
                       ? Style.active
-                      : Style.inactive
+                      : activeCardIndex > index
+                      ? Style["slide-out"]
+                      : Style.restore
                   }`,
-                  style: { "--i": `${index + 1}` },
+                  style: { "--i": `${index}` },
                   onClick: () => handleCardClick(index),
                   border: "2px solid #F6E4FF",
                   background: "#fff",
-                  borderRadius: "8px",
+                  borderRadius: "24px",
                   padding: "16px",
                   margin: "8px",
                   width: "560px",

@@ -55,7 +55,6 @@ const Feature = () => {
     nextArrow: <CustomNextArrow />,
     afterChange: (index) => setCurrentIndex(index),
   };
-  console.log(isPlaying);
   const togglePlayPause = () => {
     if (sliderRef.current) {
       if (isPlaying) {

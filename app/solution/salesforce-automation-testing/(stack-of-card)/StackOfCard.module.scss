@@ -18,6 +18,7 @@
     justify-content: center;
     align-items: center;
     height: 580px;
+    overflow: hidden;
 
     &__left-div {
       display: flex;
@@ -27,18 +28,18 @@
       gap: 10px;
       height: 352px;
       width: 430px;
-      background: radial-gradient(
-        64.43% 50% at 50% 50%,
-        #c6c6c6 78%,
-        #71347b 147%
-      );
+      border-top-left-radius: 16px;
+      border-bottom-left-radius: 16px;
+
+      background: linear-gradient(135deg, #f3e5ff 38%, #b48ec4);
       &__row {
         display: flex;
         width: 382px;
+        border-radius: 12px;
         height: 64px;
         align-items: center;
         gap: 20px;
-        padding-left: 10px;
+        padding-left: 18px;
         &__icon {
           height: 32px;
           width: 32px;
@@ -51,6 +52,10 @@
         &__text {
           font-weight: 500;
           font-size: 18px;
+          &--active {
+            font-weight: 700;
+            font-size: 18px;
+          }
         }
         &--active {
           background-color: white;
@@ -104,11 +109,10 @@
         background: #fff;
         transform-style: preserve-3d;
         overflow: hidden;
-        transition: transform 1s ease, opacity 1s ease, z-index 0.5s ease;
+        transition: transform 0.8s ease-in-out, opacity 0.5s ease-in-out;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        z-index: calc(20 - abs(var(--i) - var(--i)));
-        transform: translateX(calc(var(--i) * -20px));
+        border-radius: 24px;
+        z-index: calc(20 - var(--i));
         // z-index: calc(10 - var(--i));
         // transform: translateX(calc(var(--i) * -20px));
         cursor: pointer;
@@ -147,12 +151,20 @@
       }
 
       .active {
-        transform: translateX(0);
+        // transform: translateX(0);
+        transform: translateX(calc((var(--i) * -20px)));
         z-index: 20;
       }
 
-      .inactive {
+      .slide-out {
+        transform: translateX(100%) scale(0.8);
+        opacity: 0;
+        z-index: -1;
+      }
+
+      .restore {
         transform: translateX(calc(var(--i) * -20px));
+        opacity: 1;
         z-index: calc(10 - var(--i));
       }
     }
