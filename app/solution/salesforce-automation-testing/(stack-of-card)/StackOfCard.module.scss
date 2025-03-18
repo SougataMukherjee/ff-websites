@@ -66,14 +66,20 @@
       .loading {
         position: relative;
         width: 560px;
-        height: 480px;
+        height: 520px;
         perspective: 800px;
         margin-left: 50px;
         .content-header {
           color: #0a2540;
           font-weight: 600;
-          font-size: 32px;
+          font-size: 20px;
           line-height: 48px;
+          margin-left: 10px;
+        }
+        .content-description {
+          color: #848f9c;
+          font-weight: 500;
+          font-size: 16px;
           margin-left: 10px;
         }
         .content-list {
@@ -86,7 +92,6 @@
             color: #848f9c;
             font-weight: 500;
             font-size: 16px;
-            line-height: 40px;
             margin-left: 20px;
             &::before {
               content: url("../../../../public/images/tick.svg");
@@ -157,9 +162,9 @@
       }
 
       .slide-out {
-        transform: translateX(100%) scale(0.8);
-        opacity: 0;
-        z-index: -1;
+        transform: translateX(150%) scale(1);
+        opacity: 1;
+        z-index: 21;
       }
 
       .restore {

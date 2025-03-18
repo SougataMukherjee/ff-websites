@@ -132,7 +132,7 @@ const StackOfCard = () => {
                   padding: "16px",
                   margin: "8px",
                   width: "560px",
-                  height: "480px",
+                  height: "520px",
                   boxShadow: "none",
                 }}
                 midContent={{
@@ -145,6 +145,9 @@ const StackOfCard = () => {
                             <h1 className={Style["content-header"]}>
                               {data.title}
                             </h1>
+                            <p className={Style["content-description"]}>
+                              {data.description}
+                            </p>
                             <ul className={Style["content-list"]}>
                               {data.bullets.map((d: string, i: number) => (
                                 <li key={`${data.id}-${i}`}>{d}</li>

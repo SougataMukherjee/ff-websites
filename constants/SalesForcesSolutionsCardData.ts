@@ -2,12 +2,14 @@ type SalesForcesSolutionsCardData = {
   id: number;
   title: string;
   bullets: string[];
+  description: string;
 };
 export const SalesForcesSolutionsCardData: SalesForcesSolutionsCardData[] = [
   {
     id: 1,
     title: "Constant Cloud Releases",
-
+    description:
+      "Organisations continue to struggle with the frequent cloud releases in the ever-changing world of Salesforce testing. Salesforces seasonal updates present new possibilities and challenges  A preventative strategy is necessary to deal wit  the possible hazards provided by evolving platforms and maintain the stability of existing features and workflows.",
     bullets: [
       "Automated End-to-End Testing: FireFlink streamlines thorough, automated end-to-end testing for Salesforce applications.",
       "Complex Scenario Testing: Delivers unmatched capabilities for testing intricate Salesforce scenarios and integrations.",
@@ -18,6 +20,8 @@ export const SalesForcesSolutionsCardData: SalesForcesSolutionsCardData[] = [
   {
     id: 2,
     title: "Subject Matter Expertise",
+    description:
+      "Organisations continue to struggle with the frequent cloud releases in the ever-changing world of Salesforce testing. Salesforces seasonal updates present new possibilities and challenges  A preventative strategy is necessary to deal wit  the possible hazards provided by evolving platforms and maintain the stability of existing features and workflows.",
 
     bullets: [
       "Platform Expertise Requirement: Effective Salesforce testing demands deep knowledge of its complexities and interconnections.",
@@ -29,6 +33,8 @@ export const SalesForcesSolutionsCardData: SalesForcesSolutionsCardData[] = [
   {
     id: 3,
     title: "Constant Cloud Releases",
+    description:
+      "Organisations continue to struggle with the frequent cloud releases in the ever-changing world of Salesforce testing. Salesforces seasonal updates present new possibilities and challenges  A preventative strategy is necessary to deal wit  the possible hazards provided by evolving platforms and maintain the stability of existing features and workflows.",
 
     bullets: [
       "Integration Complexity: Numerous Salesforce integrations increase testing challenges.",
@@ -40,6 +46,8 @@ export const SalesForcesSolutionsCardData: SalesForcesSolutionsCardData[] = [
   {
     id: 4,
     title: "Maintainability and UI Complexity",
+    description:
+      "Organisations continue to struggle with the frequent cloud releases in the ever-changing world of Salesforce testing. Salesforces seasonal updates present new possibilities and challenges  A preventative strategy is necessary to deal wit  the possible hazards provided by evolving platforms and maintain the stability of existing features and workflows.",
 
     bullets: [
       "UI Complexity Challenges: Salesforce’s dynamic elements and iframes complicate UI testing.",
