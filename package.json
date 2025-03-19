@@ -24,7 +24,7 @@
     "react-slick": "^0.30.2",
     "sass": "^1.81.0",
     "slick-carousel": "^1.8.1",
-    "website-pixel-react": "^1.0.0",
+    "website-pixel-react": "^1.0.26",
     "yup": "^1.4.0"
   },
   "devDependencies": {

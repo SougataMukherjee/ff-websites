@@ -6212,10 +6212,10 @@ webidl-conversions@^7.0.0:
   resolved "https://registry.npmjs.org/webidl-conversions/-/webidl-conversions-7.0.0.tgz"
   integrity sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==
 
-website-pixel-react@^1.0.0:
-  version "1.0.7"
-  resolved "https://registry.npmjs.org/website-pixel-react/-/website-pixel-react-1.0.7.tgz"
-  integrity sha512-yRAtPFDCWM1g+ygnVFIDxSflG2tF2Wg2nugF24DeCrbGbLOHr4AL9rEIOcy/yTNvn80UfTfKKiWuMBHjNSCv3Q==
+website-pixel-react@^1.0.26:
+  version "1.0.26"
+  resolved "https://registry.npmjs.org/website-pixel-react/-/website-pixel-react-1.0.26.tgz"
+  integrity sha512-ivP854IFaK8XMPLS0vPSBPH/P0GWbFX+P6seuo93LOlTxIxme7nxTkyVDB3q6sMlFNlZoUflRVMnmWdEQsjAfQ==
   dependencies:
     "@babel/plugin-transform-react-jsx" "^7.24.7"
     "@dnd-kit/core" "^6.1.0"
