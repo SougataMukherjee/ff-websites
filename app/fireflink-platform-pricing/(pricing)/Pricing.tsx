@@ -1,25 +1,58 @@
+"use client";
+import Image from "next/image";
 import styles from "./Pricing.module.scss";
-
+import RectStick from "@/public/images/rect.svg";
+import { Icon } from "website-pixel-react";
 const Pricing = () => {
   const data = [
     {
       category: "Manual Testcase Management",
       features: [
-        "Manual testcase templates",
-        "Traceability of test cases",
-        "Manual test suite execution",
-        "Manual test execution result analytics",
+        {
+          name: "Manual testcase templates",
+          availability: [true, true, true], // Tick for all plans
+        },
+        {
+          name: "Traceability of test cases",
+          availability: [true, true, false], // Cross for last plan
+        },
+        {
+          name: "Manual test suite execution",
+          availability: [true, false, false], // Cross for last two
+        },
+        {
+          name: "Manual test execution result analytics",
+          availability: [true, true, true],
+        },
       ],
     },
     {
       category: "UI Element Identification",
       features: [
-        "Access to FireLink Finder tool",
-        "Element recognition on Web, Android & iOS",
-        "Export element locators in Excel & CSV format",
-        "Automatic generation of optimal locators",
-        "Identify dynamic elements with the reference of static elements",
-        "Shadow DOM element identification",
+        {
+          name: "Access to FireLink Finder tool",
+          availability: [true, false, false], // Cross for last two
+        },
+        {
+          name: "Element recognition on Web, Android & iOS",
+          availability: [true, true, true],
+        },
+        {
+          name: "Export element locators in Excel & CSV format",
+          availability: [true, true, false], // Cross for last plan
+        },
+        {
+          name: "Automatic generation of optimal locators",
+          availability: [true, true, true],
+        },
+        {
+          name: "Identify dynamic elements with the reference of static elements",
+          availability: [true, false, false], // Cross for last two
+        },
+        {
+          name: "Shadow DOM element identification",
+          availability: [true, true, true],
+        },
       ],
     },
   ];
@@ -38,9 +71,12 @@ const Pricing = () => {
           <tr className={styles.planHeader}>
             <th className={styles.featureColumn}>Feature</th>
             {plans.map((plan, index) => (
-              <th key={index} className={styles.planColumn}>
-                {plan}
-              </th>
+              <>
+                <Image src={RectStick} alt="stick" width={1} height={35} />
+                <th key={index} className={styles.planColumn}>
+                  {plan}
+                </th>
+              </>
             ))}
           </tr>
         </thead>
@@ -59,10 +95,14 @@ const Pricing = () => {
               </tr>
               {section.features.map((feature, i) => (
                 <tr key={`${index}-${i}`} className={styles.featureRow}>
-                  <td className={styles.feature}>{feature}</td>
+                  <td className={styles.feature}>{feature.name}</td>
                   {plans.map((_, j) => (
                     <td key={j} className={styles.checkmark}>
-                      ✔
+                      <Icon
+                        name={feature.availability[j] ? "tick" : "close"}
+                        className={styles.checkTick}
+                        color={feature.availability[j] ? "#09B285" : "#FF4D4D"}
+                      />
                     </td>
                   ))}
                 </tr>

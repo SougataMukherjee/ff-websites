@@ -1,23 +1,23 @@
 .container {
   width: 95%;
   overflow-x: auto;
-  // background-color: #fff;
   margin: 32px;
 }
 
 .headerTable {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  background: #f7f9fc;
 }
 .bodyTable {
   width: 100%;
   border-collapse: separate;
-  border-spacing: 0;
   background-color: #fff;
-  padding: 16px;
+  padding: 32px;
   border-radius: 12px;
+  border-spacing: 0 8px;
   overflow: hidden;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds slight shadow */
 }
 
 .bodyTable tr:first-child td:first-child {
@@ -33,11 +33,6 @@
   border-bottom-right-radius: 12px;
 }
 
-.headerTable {
-  // margin-bottom: 16px; /* Space between header and body */
-  background: #f7f9fc;
-}
-
 .tableGap {
   height: 10px; /* Additional gap */
   background: #f7f9fc;
@@ -48,6 +43,9 @@
   color: #fff;
   height: 100px;
   text-align: center;
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
 
   th {
     padding: 12px;
@@ -56,6 +54,7 @@
   th:first-child {
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
+    padding-left: 40px;
   }
 
   th:last-child {
@@ -78,6 +77,15 @@
   font-weight: bold;
   background-color: #fff;
   padding: 10px;
+  td {
+    border-top: 1px solid #d9d9d9;
+    padding-top: 20px;
+    padding-left: 8px;
+  }
+  &:first-child td {
+    border-top: none;
+    padding-top: 9px;
+  }
 }
 
 .featureRow {
@@ -88,12 +96,20 @@
 .feature {
   padding: 8px;
   width: 40%;
+  border-left: none;
+  color: #0a2540;
 }
 
 .checkmark {
-  text-align: center;
-  color: green;
   font-size: 1.2em;
   width: 20%;
   background-color: #fff;
+  border-left: 1px solid #d9d9d9;
+  position: relative;
+  .checkTick {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
