@@ -1,7 +1,7 @@
+@use "@/app/_breakpoints.scss" as *;
 .container {
   width: 95%;
   overflow-x: auto;
-  margin: 32px;
 }
 
 .headerTable {
@@ -17,7 +17,14 @@
   padding: 32px;
   border-radius: 12px;
   border-spacing: 0 8px;
-  overflow: hidden;
+  // overflow: hidden;
+  .bodyTable thead {
+    position: sticky;
+    top: 0;
+    background: #2d1131;
+    color: white;
+    z-index: 10;
+  }
 }
 
 .bodyTable tr:first-child td:first-child {
@@ -41,7 +48,6 @@
 .planHeader {
   background-color: #2d1131;
   color: #fff;
-  height: 100px;
   text-align: center;
   display: flex;
   align-items: center;
@@ -49,6 +55,12 @@
 
   th {
     padding: 12px;
+    @include xs {
+      padding: 0;
+    }
+    @include sm {
+      padding: 0;
+    }
   }
 
   th:first-child {
@@ -66,11 +78,23 @@
 .featureColumn {
   width: 40%;
   text-align: left;
+  @include xs {
+    font-size: 12px;
+  }
+  @include sm {
+    font-size: 12px;
+  }
 }
 
 .planColumn {
   width: 20%;
   text-align: center;
+  @include xs {
+    font-size: 12px;
+  }
+  @include sm {
+    font-size: 12px;
+  }
 }
 
 .sectionHeader {
@@ -98,6 +122,12 @@
   width: 40%;
   border-left: none;
   color: #0a2540;
+  @include xs {
+    font-size: 12px;
+  }
+  @include sm {
+    font-size: 12px;
+  }
 }
 
 .checkmark {
@@ -112,4 +142,11 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+}
+.tableWrapper {
+  max-height: 400px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  scrollbar-width: none;
 }

@@ -2,8 +2,10 @@
 import Image from "next/image";
 import styles from "./Pricing.module.scss";
 import RectStick from "@/public/images/rect.svg";
-import { Icon } from "website-pixel-react";
+import { Icon, useDeviceType } from "website-pixel-react";
 const Pricing = () => {
+  const { isMobile } = useDeviceType();
+
   const data = [
     {
       category: "Manual Testcase Management",
@@ -62,15 +64,22 @@ const Pricing = () => {
     "Cloud Professional",
     "On Premise - Enterprise",
   ];
+  const mobilePlans = ["Free Trial", "Professional", "Enterprise"];
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      style={{ margin: isMobile ? "0" : "32px" }}
+    >
       {/* Header Table */}
       <table className={styles.headerTable}>
         <thead>
-          <tr className={styles.planHeader}>
+          <tr
+            className={styles.planHeader}
+            style={{ height: isMobile ? "60px" : "100px" }}
+          >
             <th className={styles.featureColumn}>Feature</th>
-            {plans.map((plan, index) => (
+            {(isMobile ? mobilePlans : plans).map((plan, index) => (
               <>
                 <Image src={RectStick} alt="stick" width={1} height={35} />
                 <th key={index} className={styles.planColumn}>
@@ -86,31 +95,36 @@ const Pricing = () => {
       <div className={styles.tableGap}></div>
 
       {/* Body Table */}
-      <table className={styles.bodyTable}>
-        <tbody>
-          {data.map((section, index) => (
-            <>
-              <tr key={index} className={styles.sectionHeader}>
-                <td colSpan={plans.length + 1}>{section.category}</td>
-              </tr>
-              {section.features.map((feature, i) => (
-                <tr key={`${index}-${i}`} className={styles.featureRow}>
-                  <td className={styles.feature}>{feature.name}</td>
-                  {plans.map((_, j) => (
-                    <td key={j} className={styles.checkmark}>
-                      <Icon
-                        name={feature.availability[j] ? "tick" : "close"}
-                        className={styles.checkTick}
-                        color={feature.availability[j] ? "#09B285" : "#FF4D4D"}
-                      />
-                    </td>
-                  ))}
+
+      <div className={styles.tableWrapper}>
+        <table className={styles.bodyTable}>
+          <tbody>
+            {data.map((section, index) => (
+              <>
+                <tr key={index} className={styles.sectionHeader}>
+                  <td colSpan={plans.length + 1}>{section.category}</td>
                 </tr>
-              ))}
-            </>
-          ))}
-        </tbody>
-      </table>
+                {section.features.map((feature, i) => (
+                  <tr key={`${index}-${i}`} className={styles.featureRow}>
+                    <td className={styles.feature}>{feature.name}</td>
+                    {plans.map((_, j) => (
+                      <td key={j} className={styles.checkmark}>
+                        <Icon
+                          name={feature.availability[j] ? "tick" : "close"}
+                          className={styles.checkTick}
+                          color={
+                            feature.availability[j] ? "#09B285" : "#FF4D4D"
+                          }
+                        />
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
