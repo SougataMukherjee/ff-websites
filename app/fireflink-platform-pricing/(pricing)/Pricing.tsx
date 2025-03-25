@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
+import React from "react";
 import styles from "./Pricing.module.scss";
 import RectStick from "@/public/images/rect.svg";
 import { Icon, useDeviceType } from "website-pixel-react";
 const Pricing = () => {
-  const { isMobile } = useDeviceType();
-
+  const { isMobile, isTab, isLargeTab, isWeb } = useDeviceType();
+  console.log(isTab, isLargeTab);
   const data = [
     {
       category: "Manual Testcase Management",
@@ -72,43 +73,74 @@ const Pricing = () => {
       style={{ margin: isMobile ? "0" : "32px" }}
     >
       {/* Header Table */}
-      <table className={styles.headerTable}>
-        <thead>
-          <tr
-            className={styles.planHeader}
-            style={{ height: isMobile ? "60px" : "100px" }}
-          >
-            <th className={styles.featureColumn}>Feature</th>
-            {(isMobile ? mobilePlans : plans).map((plan, index) => (
-              <>
-                <Image src={RectStick} alt="stick" width={1} height={35} />
-                <th key={index} className={styles.planColumn}>
-                  {plan}
-                </th>
-              </>
-            ))}
-          </tr>
-        </thead>
-      </table>
+      {!isMobile && (
+        <table className={styles.headerTable}>
+          <thead>
+            <tr
+              className={styles.planHeader}
+              style={{
+                height: isMobile
+                  ? "60px"
+                  : isTab || isLargeTab
+                  ? "80px"
+                  : "100px",
+                padding: isTab || isLargeTab || isWeb ? "32px" : "0",
+              }}
+            >
+              <th className={styles.featureColumn}>Feature</th>
+              {(isMobile || isTab || isLargeTab ? mobilePlans : plans).map(
+                (plan, index) => (
+                  <>
+                    <Image src={RectStick} alt="stick" width={1} height={35} />
+                    <th key={index} className={styles.planColumn}>
+                      {plan}
+                    </th>
+                  </>
+                )
+              )}
+            </tr>
+          </thead>
+        </table>
+      )}
 
       {/* Gap Between Tables */}
       <div className={styles.tableGap}></div>
 
       {/* Body Table */}
 
-      <div className={styles.tableWrapper}>
-        <table className={styles.bodyTable}>
+      <div
+        className={styles.tableWrapper}
+        style={{ maxHeight: isMobile ? "none" : "400px" }}
+      >
+        <table
+          className={styles.bodyTable}
+          style={{ padding: isMobile ? "16px" : "32px" }}
+        >
           <tbody>
             {data.map((section, index) => (
-              <>
+              <React.Fragment key={index}>
                 <tr key={index} className={styles.sectionHeader}>
                   <td colSpan={plans.length + 1}>{section.category}</td>
                 </tr>
+                {isMobile && (
+                  <tr className={styles.mobileHeader}>
+                    <td></td>
+                    {mobilePlans.map((data, ind) => (
+                      <td key={ind}>{data}</td>
+                    ))}
+                  </tr>
+                )}
                 {section.features.map((feature, i) => (
                   <tr key={`${index}-${i}`} className={styles.featureRow}>
                     <td className={styles.feature}>{feature.name}</td>
                     {plans.map((_, j) => (
-                      <td key={j} className={styles.checkmark}>
+                      <td
+                        key={j}
+                        className={styles.checkmark}
+                        style={{
+                          borderLeft: isMobile ? "none" : "1px solid #d9d9d9",
+                        }}
+                      >
                         <Icon
                           name={feature.availability[j] ? "tick" : "close"}
                           className={styles.checkTick}
@@ -120,7 +152,7 @@ const Pricing = () => {
                     ))}
                   </tr>
                 ))}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>
